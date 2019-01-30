@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+	<!-- Consola -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<charset>ISO-8859-1</charset>
+			<pattern>[%d{yyyy-MM-dd@HH:mm:ss.SSS}] [%thread] [%-5level] [%logger{26}:%L] [%mdc{fid}] %msg%n</pattern>
+		</encoder>
+	</appender>
+	<!-- Archivo -->
+	<appender name="fileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/indvalid-rest.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>logs/backup/indvalid-rest-%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<charset>ISO-8859-1</charset>
+			<pattern>[%d{yyyy-MM-dd@HH:mm:ss.SSS}] [%thread] [%-5level] [%logger{26}:%L] [%mdc{fid}] %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="com.jcraft" level="ERROR" />
+	<logger name="chapters.configuration" level="ERROR" />
+	<logger name="com.atomikos" level="ERROR" />
+	<logger name="com.mchange.v2" level="ERROR" />
+	<logger name="javax.xml.rpc" level="ERROR" />
+	<logger name="org.apache" level="ERROR" />
+	<logger name="org.ajax4jsf" level="ERROR" />
+	<logger name="org.castor" level="ERROR" />
+	<logger name="org.drools" level="ERROR" />
+	<logger name="org.exolab.castor" level="ERROR" />
+	<logger name="org.hibernate" level="ERROR" />
+	<logger name="org.richfaces" level="DEBUG" />
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.springframework.security" level="WARN" />
+	<logger name="org.springframework.orm.jpa.support" level="INFO" />
+	<logger name="ch.qos.logback" level="ERROR" />
+	<logger name="springfox" level="ERROR" />
+	<!-- Indvalid -->
+	<logger name="com.indigo.indvalid" level="DEBUG" />
+	<root level="INFO">
+		<appender-ref ref="console" />
+		<appender-ref ref="fileAppender" />
+	</root>
+</configuration>

@@ -32,7 +32,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Configurac&oacute;n de Swagger2 para habilitar la documentaci&oacute;n de servicios REST
- * @author olaldec
  *
  */
 @Slf4j
